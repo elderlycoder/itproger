@@ -133,6 +133,10 @@ class Post extends Model{
         $date = Carbon::createFromFormat('d/m/y', $value)->format('Y-m-d');
         $this->attributes['date'] = $date;
     }
+    public function getDateAttribute($value){//получаем значение инпута 'date'
+        $date = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/y');
+        return $date;
+    }
 
     public function getCategoryTitle(){
         if($this->category !=null){
