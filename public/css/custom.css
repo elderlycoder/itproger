@@ -1,0 +1,15 @@
+tr {
+   width: 100%;
+   /* display: inline-table; */
+   height:10px;                
+   }
+
+.table-flex{
+   display: flex;
+   padding: 0 5px;
+}
+
+.item{
+   margin: 0 5px
+}
+.fa{ color: black;}

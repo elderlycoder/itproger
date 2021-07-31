@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model{  
-    protected $fillable = ['title', 'content', 'date'];
+    protected $fillable = ['title', 'content', 'date', 'description'];
     use Sluggable;
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;    
@@ -62,7 +63,7 @@ class Post extends Model{
         
         $this->removeImage();
         // 2) генерирует название файла
-        $filename = str_random(10) . '.' . $image->extension();
+        $filename = Str::random(10) . '.' . $image->extension();
         // 3) сохраняет файл в папку uploads
         $image->storeAs('uploads', $filename);
         // закидывает значение в поле image (это значит в БД?)
@@ -149,9 +150,35 @@ class Post extends Model{
     public function getTagsTitle(){
         if(!$this->tags->isEmpty()){
             return implode(', ', $this->tags->pluck('title')->all());
-        }
-        
+        }        
         return 'Нет тегов';
     }
 
+    public function getDate(){ //преобразуем формат даты из текущего 08/09/20 в Сентябрь 8, 2020
+       return  Carbon::createFromFormat('d/m/y', $this->date)->format('F d, Y');
+    }
+
+    public function hasPrevious(){  //возвращает наибольший id поста перед текущим
+        // вместо self можно использовать Post
+        return self::where('id', '<', $this->id)->max('id');
+    }
+
+    public function getPrevious(){
+        $postID = $this->hasPrevious();
+            return self::find($postID);
+        }
+
+    public function hasNext(){
+        return self::where('id', '>', $this->id)->min('id');
+    }
+
+    public function getNext(){
+        $postID = $this->hasNext();
+            return self::find($postID);
+        }
+
+    public function related(){
+        return  self::all()->except($this->id); //вернуть все посты кроме текущего
+    }
 }
+

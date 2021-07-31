@@ -12,7 +12,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('sendemail');
 // });
 //другой вариант использовать метод match
-
+Route::get('/blog', 'HomeController@index');
+Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
+Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
+Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
 Route::get('/', function(){return view('home');})->name('home');
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function(){
     Route::get('/', 'DashboardController@index');
@@ -28,8 +31,8 @@ Route::get('about', function(){return view('about');})->name('about');
 Route::get('contact', function(){
     return view('contact');
 })->name('contact');
-Route::get('/product/all', 'ProductController@allData')->name('product-data');
-Route::get('/product/{id}', 'ProductController@getProductFromId')->name('product-from-id ');
+Route::get('/product/all', 'ProductController@allData')->name('products-list');
+Route::get('/product/{id}', 'ProductController@getProductFromId')->name('product-from-id');
 Route::get('/contact/all', 'ContactController@allData')->name('contact-data');
 Route::post('/contact/submit', 'ContactController@submit')->name('contact-form');
 Route::get('/contact/{id}', 'ContactController@findContact')->name('contact-find');

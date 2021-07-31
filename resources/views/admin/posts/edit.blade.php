@@ -5,14 +5,14 @@
 <div class="content-wrapper">
    <!-- Content Header (Page header) -->
    <section class="content-header">
-   <h1> Изменить статью </h1>
+   <h1> Изменить статью</h1>
    </section>
 
    <!-- Main content -->
    <section class="content">
 
    <!-- Default box -->
-   {!! Form::open(['route'	=>	['posts.update', $post->id], 'files' => true, 'method' => 'put']) !!}
+   {{Form::open(['route'=>['posts.update', $post->id], 'files' => true, 'method' => 'put'])}}
    <div class="box">
       <div class="box-header with-border">
          <h3 class="box-title">Обновляем статью</h3>
@@ -21,17 +21,19 @@
          <div class="col-md-6">
          <div class="form-group">
             <label for="exampleInputEmail1">Название</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" value="{{$post->title}}">
+            <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="" value="{{$post->title}}">
          </div>
          
          <div class="form-group">
-            <img src="../assets/dist/img/boxed-bg.jpg" alt="" class="img-responsive" width="200">
+            <img src="{{$post->getImage()}}" alt="" class="img-responsive" width="200">
             <label for="exampleInputFile">Лицевая картинка</label>
-            <input type="file" id="exampleInputFile">
+            <input type="file" id="exampleInputFile" name="image">
          </div>
          <div class="form-group">
             <label>Категория</label>
-            {{Form::select('category_id', $categories, $post->category_id, ['class'=>'form-control select2'])}}
+            {{Form::select('category_id', $categories,
+               ($post->category != null) ? $post->category->id : null,
+               ['class'=>'form-control select2'])}}
          </div>
          <div class="form-group">
             <label>Теги</label>
@@ -72,6 +74,12 @@
          </div>
          </div>
          <div class="col-md-12">
+            <div class="form-group">
+               <label for="exampleInputEmail1">Описание</label>
+               <textarea name="description" id="" cols="30" rows="10" class="form-control">{{$post->description}}</textarea>
+            </div>
+         </div>
+         <div class="col-md-12">
          <div class="form-group">
             <label for="exampleInputEmail1">Полный текст</label>
             <textarea name="content" id="" cols="30" rows="10" class="form-control">. 
@@ -87,7 +95,7 @@
       <!-- /.box-footer-->
    </div>
    <!-- /.box -->
-   {!! Form::close() !!}
+   {{Form::close()}}
    </section>
    <!-- /.content -->
 </div>

@@ -55,7 +55,7 @@ class PostsController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
+    {   //dd($request);
         $this->validate($request, [
             'title'=>'required',
             'content'=>'required',
@@ -69,7 +69,7 @@ class PostsController extends Controller
         $post->setTags($request->get('tags'));
         $post->toggleStatus($request->get('status'));
         $post->toggleFeatured($request->get('is_featured'));
-
+            
         return redirect()->route('posts.index');
     }
 
@@ -79,6 +79,7 @@ class PostsController extends Controller
   }
     public function destroy($id)
     {
-        //
+        Post::find($id)->remove();
+        return redirect()->route('posts.index');
     }
 }

@@ -1,7 +1,7 @@
 {
-   "editor.fontSize": 15,
+   "editor.fontSize": 16,
    "editor.fontLigatures": true,
-   "editor.fontWeight": 250,
+   "editor.fontWeight": 600,
    "editor.lineHeight": 24,
    "editor.wordWrap": "on",
    "bracketPairColorizer.consecutivePairColors": [
@@ -17,5 +17,5 @@
       ],
       "Red"
    ],
-   "editor.fontFamily": "Jetbrains Mono, Iosevka Light, Hack, Consolas, 'Courier New', monospace"
+   "editor.fontFamily": "Iosevka Light, Jetbrains Mono, Iosevka Light, Hack, Consolas, 'Courier New', monospace"
 }

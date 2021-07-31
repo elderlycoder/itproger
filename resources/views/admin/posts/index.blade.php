@@ -50,12 +50,18 @@
                   <td>
                     <img src="{{$post->getImage()}}" alt="" width="100">
                   </td>
-                  <td><a href="{{route('posts.edit', $post->id)}}" class="fa fa-pencil"></a> 
-                  {{Form::open(['route'=>['posts.destroy', $post->id], 'method'=>'delete'])}}
-                  <button onclick="return confirm('Уверены? ')" type="submit" class="delete">
-                  <i class="fa fa-remove"></i>
-                  </button>
-                  {{Form::close()}}
+                  <td>
+                    <div class="table-flex">
+                     <div class="item"><button><a href="{{route('posts.edit', $post->id)}}" class="fa fa-pencil"></a></button></div>
+                     <div class="item">
+                       {{Form::open(['route'=>['posts.destroy', $post->id], 'method'=>'delete'])}}
+                        <button onclick="return confirm('Уверены? ')" type="submit" class="delete">
+                        <i class="fa fa-trash"></i>
+                        </button>
+                        {{Form::close()}}
+                      </div>
+                  
+                    </div>
                   </td>
                 </tr>
                 @endforeach
