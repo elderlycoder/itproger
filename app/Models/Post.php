@@ -180,5 +180,10 @@ class Post extends Model{
     public function related(){
         return  self::all()->except($this->id); //вернуть все посты кроме текущего
     }
+
+    public function hasCategory()
+    {
+        return $this->category != null ? true : false;
+    }
 }
 

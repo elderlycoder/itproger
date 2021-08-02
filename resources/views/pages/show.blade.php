@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
             <ul class="nav navbar-nav text-uppercase">
-                <li><a href="#">Homepage</a></li>
+                <li><a href="/blog">Homepage</a></li>
                 <li><a href="about-me.html">ABOUT ME </a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
@@ -48,6 +48,7 @@
 </nav>
 <!--main content start-->
 <div class="main-content">
+<h1>Страница отдельного поста</h1>
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -57,8 +58,9 @@
                 </div>
                 <div class="post-content">
                     <header class="entry-header text-center text-uppercase">
-                        <h6><a href="#">{{$post->getCategoryTitle()}}</a></h6>
-
+                        @if($post->hasCategory())
+                        <h6><a href="{{route('category.show', $post->category->slug)}}">{{$post->getCategoryTitle()}}</a></h6>
+                        @endif
                         <h1 class="entry-title"><a href="blog.html">{{$post->title}}</a></h1>
 
 
@@ -68,7 +70,7 @@
                     </div>
                     <div class="decoration">
                         @foreach($post->tags as $tag)
-                        <a href="#" class="btn btn-default">{{$tag->title}}</a>
+                        <a href="{{route('tag.show',$tag->slug)}}" class="btn btn-default">{{$tag->title}}</a>
                         @endforeach
                     </div>
 

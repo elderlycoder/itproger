@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 //другой вариант использовать метод match
 Route::get('/blog', 'HomeController@index');
 Route::get('/post/{slug}', 'HomeController@show')->name('post.show');
-Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show');
-Route::get('/category/{slug}', 'HomeController@category')->name('category.show');
+Route::get('/tag/{slug}', 'HomeController@tag')->name('tag.show'); //вывод по тегу
+Route::get('/category/{slug}', 'HomeController@category')->name('category.show');//вывод по категории
 Route::get('/', function(){return view('home');})->name('home');
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function(){
     Route::get('/', 'DashboardController@index');
