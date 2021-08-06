@@ -37,9 +37,9 @@
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                <ul class="nav navbar-nav text-uppercase">
-                  <li><a href="{{ route('products-list') }}">все товары</a></li>
-                  <li><a href="about-me.html">ABOUT ME </a></li>
-                  <li><a href="contact.html">CONTACT</a></li>
+                  <li><a href="{{route('products-list')}}">все товары</a></li>
+                  <li><a href="/blog">Блог</a></li>
+                  <li><a href="category/video">Видео</a></li>
                </ul>
 
                <ul class="nav navbar-nav text-uppercase pull-right">

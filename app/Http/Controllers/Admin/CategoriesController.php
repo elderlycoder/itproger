@@ -9,16 +9,15 @@ class CategoriesController extends Controller
 {
     public function index(){
         $categories = Category::all(); // получаем все категории из БД через модель Category и сохраняем их в переменную $categories
-        return view('admin.categories.index', ['categories' => $categories]);
+        return view('admin.categories.index', compact('categories'));
     }
 
-    public function create(){
-        return view('admin/categories/create');
+    public function create(){ //метод просто возвращает вид с формой
+        return view('admin.categories.create');
     }
 
     public function store(Request $request){
         $this->validate($request, ['title' => 'required']);
-        dd($request);
         Category::create($request->all());
         return redirect()->route('categories.index');
     }

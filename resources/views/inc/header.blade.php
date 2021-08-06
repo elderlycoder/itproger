@@ -5,7 +5,7 @@
 
       <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark text-decoration-none" href="{{ route('products-list') }}">все товары</a>
-        <a class="p-2 text-dark text-decoration-none" href="{{ route('about') }}">About</a>
+        <a class="p-2 text-dark text-decoration-none" href="blog">Блог</a>
         <a class="p-2 text-dark text-decoration-none" href="{{ route('contact') }}">Contact</a>
         <a class="p-2 text-dark text-decoration-none" href="{{ route('contact-data') }}">Сообщения</a>
       </nav>

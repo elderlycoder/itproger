@@ -3,7 +3,8 @@
 @section('content')
 <!--main content start-->
 <div class="main-content">
-   <h1>Список постов категории</h1>
+   <h1>Список постов категории или тега</h1>
+   <p>Роут - Route::get('/category/{slug}', 'HomeController@category')->name('category.show');//вывод по категории</p>
    <div class="container">
       <div class="row">
          <div class="col-md-8">
