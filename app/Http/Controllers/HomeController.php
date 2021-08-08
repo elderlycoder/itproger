@@ -9,14 +9,9 @@ class HomeController extends Controller{
 
    public function index(){
       $posts = Post::paginate(3); //выводить по 3 поста
-      $popularPosts = Post::orderBy('views', 'desc')->take(3)->get();
-     // dd($popularPosts);
-      // $featuredPosts = Post::where('is_featured', 1)->take(3)->get();
-      // $recentPosts = Post::orderBy('date', 'desc')->take(4)->get();
-      // $categories = Category::all();
-      return view('pages.index', ['posts'=>$posts, 'popularPosts'=>$popularPosts]);
-      //return view('pages.index', ['posts'=>$posts, 'popularPosts'=>$popularPosts, 'featuredPosts'=>$featuredPosts, 'recentPosts'=>$recentPosts, 'categories'=>$categories]);
-      //return view('pages.index', compact('posts', 'popularPosts', 'featuredPosts', 'recentPosts', 'categories'));
+      return view('pages.index')->with('posts', $posts);
+      // аналогичен - return view('pages.index', ['posts'=>$posts]);
+      
    }
 
    public function show($slug){// slug - параметр получаемый из маршрута к которому привязан метод контроллера, часто используют одинаковые имена в названии параметра маршрута и и названии аргумента метода, но это не обязательно
