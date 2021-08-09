@@ -6,9 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    <!-- favicon icon -->
-
    <title>Blog</title>
-
    <!-- common css -->
    <link rel="stylesheet" href="/css/front.css">
    <!-- Favicon -->
@@ -44,7 +42,7 @@
 
                <ul class="nav navbar-nav text-uppercase pull-right">
                   <li><a href="/register">Register</a></li>
-                  <li><a href="about-me.html">Login</a></li>
+                  <li><a href="/login">Login</a></li>
                   <li><a href="contact.html">My profile</a></li>
                </ul>
 
